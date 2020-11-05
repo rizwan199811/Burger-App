@@ -34,7 +34,8 @@ export default function BurgerBuilder() {
         <Aux>
             <div>
                 <Burger ingredients={ingredients}></Burger>
-                <BuildControls></BuildControls>
+                <BuildControls 
+                ingredientsAdded={addIngredientHandler}></BuildControls>
             </div>
             <div>
             </div>
