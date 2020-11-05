@@ -1,8 +1,10 @@
-import classes from '*.module.css'
+
 import React from 'react'
 import classes from './Backdrop.module.css'
 function Backdrop(props) {
-    props.show ? <div className={classes.Backdrop}></div>
+    return(
+    props.show ? <div className={classes.Backdrop} onClick={props.closed}></div>:null
+    )
 }
 
 export default Backdrop
