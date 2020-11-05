@@ -10,11 +10,19 @@ export default function BurgerBuilder() {
         meat: 0
     })
     const [totalPrice, setTotalPrice] = useState(4);
+
     const IngredientsPrices = {
         salad: 0.5,
         cheese: 0.4,
         meat: 1.3,
         bacon: 0.7
+    }
+    const disabledInfo={
+        ...ingredients
+    }
+    for(let key in disabledInfo)
+    {
+        disabledInfo[key]=disabledInfo[key]<=0;
     }
     const addIngredientHandler = (type) => {
         const oldCount = ingredients[type];
@@ -30,11 +38,27 @@ export default function BurgerBuilder() {
         setTotalPrice(newPrice)
 
     }
+    const removeIngredient =(type)=>{
+        const oldCount = ingredients[type];
+        if(oldCount<=0){
+            return
+        }
+        const updatedCount = oldCount - 1;
+        const updatedIngredients = {
+            ...ingredients
+        }
+        updatedIngredients[type] = updatedCount;
+        const price=IngredientsPrices[type];
+        const oldPrice =totalPrice;
+        const newPrice =oldPrice-price;
+        setIngredients(updatedIngredients);
+        setTotalPrice(newPrice)
+    }
     return (
         <Aux>
             <div>
-                <Burger ingredients={ingredients}></Burger>
-                <BuildControls></BuildControls>
+                <Burger ingredients={ingredients} ></Burger>
+                <BuildControls addIngredient={addIngredientHandler} removeIngredients={removeIngredient} disabledInfo={disabledInfo} price={totalPrice}></BuildControls>
             </div>
             <div>
             </div>
