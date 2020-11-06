@@ -9,7 +9,7 @@ function Modal(props) {
         <Aux>
 
             <Backdrop show={props.show} closed={props.Modalclosed}></Backdrop>
-        <div className={classes.Modal} style={{ transform: props.show ? 'translateY(0)' : 'translateY(-100vh)' }
+        <div className={classes.Modal} style={{ transform: props.show ? 'translateY(0)' : 'translateY(-200vh)' }
             , { opacity: props.show ? '1' : '0' }}>
             {props.children}
         </div>

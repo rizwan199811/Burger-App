@@ -28,7 +28,7 @@ export default function BurgerBuilder(props) {
         ...ingredients
     }
     for (let key in disabledInfo) {
-        disabledInfo[key] = disabledInfo[key] <=0;
+        disabledInfo[key] = disabledInfo[key] <= 0;
     }
     console.log(disabledInfo)
     const addIngredientHandler = (type) => {
@@ -82,17 +82,30 @@ export default function BurgerBuilder(props) {
     const removeModalHandler = () => {
         setPurchasing(false);
     }
-    return (
-        <Aux> 
-            <Modal show={purchasing} Modalclosed={removeModalHandler}>
-            <OrderSummary ingredients={ingredients}></OrderSummary>
-            </Modal>
-            <Burger ingredients={ingredients} ></Burger>
-            <BuildControls
-                addIngredient={addIngredientHandler} removeIngredients={removeIngredient}
-                disabledInfo={disabledInfo} price={totalPrice} purchasable={purchasable.purchasable} ordered={purchaseHandler}>
-            </BuildControls>
-
+    const cancelOrderHandler = () => {
+        setPurchasing(false);
+        setTotalPrice(4);
+        setIngredients({salad: 0,
+            bacon: 0,
+            cheese: 0,
+            meat: 0})
+    }
+    const continuePurchaseHandler = () => {
+        alert('Continue to checkout')
+    }
+    return ( <Aux >
+        <Modal show = { purchasing }
+        Modalclosed = { removeModalHandler } >
+        <OrderSummary ingredients = { ingredients } cancelOrder={cancelOrderHandler} continuePurchase={continuePurchaseHandler} price={totalPrice.toFixed(2)}> </OrderSummary> 
+        </Modal> 
+        <Burger ingredients = { ingredients } > </Burger> 
+        <BuildControls addIngredient = { addIngredientHandler }
+        removeIngredients = { removeIngredient }
+        disabledInfo = { disabledInfo }
+        price = { totalPrice }
+        purchasable = { purchasable.purchasable }
+        ordered = { purchaseHandler } >
+        </BuildControls>
         </Aux>
     )
 }
