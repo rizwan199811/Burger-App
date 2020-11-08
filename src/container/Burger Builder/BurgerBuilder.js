@@ -30,7 +30,7 @@ export default function BurgerBuilder(props) {
     for (let key in disabledInfo) {
         disabledInfo[key] = disabledInfo[key] <= 0;
     }
-    console.log(disabledInfo)
+    // console.log(disabledInfo)
     const addIngredientHandler = (type) => {
         const oldCount = ingredients[type];
         const updatedCount = oldCount + 1;

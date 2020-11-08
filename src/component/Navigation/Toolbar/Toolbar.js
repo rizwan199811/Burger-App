@@ -1,15 +1,15 @@
 import React from 'react'
 import Logo from '../../Logo/Logo'
 import NavigationItems from '../NavigationItems/NavigationItems'
-import SideDrawer from '../../SideDrawer/SideDrawer'
+import DrawerToggler from '../../SideDrawer/DrawerToggler/DrawerToggler'
 import classes from './Toolbar.module.css'
 function Toolbar(props) {
     return (
         <header className={classes.Toolbar}>
-            <div>MENU</div>
+            <DrawerToggler clicked={props.drawerTogglerClick}></DrawerToggler>
             <Logo height='80%'></Logo>
             <nav className={classes.DesktopOnly}>
-            <NavigationItems></NavigationItems>
+                <NavigationItems></NavigationItems>
             </nav>
         </header>
     )
