@@ -13,17 +13,17 @@ function SideDrawer(props) {
     console.log(props.open)
     return (
         <Aux>
-        <Backdrop clicked={props.closed} show={props.open} ></Backdrop>
-        <div className={attachedClasses.join(' ')} onClick={props.closed}>
-        <div className={classes.SideDrawer}>
-            <div className={classes.Logo}>
-                <Logo></Logo>
+            <Backdrop clicked={!props.open} ></Backdrop>
+            <div className={attachedClasses.join(' ')} onClick={props.closed}>
+                <div className={classes.SideDrawer}>
+                    <div className={classes.Logo}>
+                        <Logo></Logo>
+                    </div>
+                    <nav>
+                        <NavigationItems></NavigationItems>
+                    </nav>
+                </div>
             </div>
-            <nav>
-                <NavigationItems></NavigationItems>
-            </nav>
-        </div>
-        </div>
         </Aux>
     )
 }
